@@ -10,14 +10,14 @@ public class RemoveDuplicateChar {
     }
 
     public static void removeDuplicates(String str) {
-        Set<String> set = new LinkedHashSet<>();
-        
+        Set<Character> set = new LinkedHashSet<>();
+
         for (char c : str.toCharArray()) {
-            set.add(String.valueOf(c));
+            set.add(c);
         }
-        
+
         StringBuilder sb = new StringBuilder();
-        for (String s : set) {
+        for (Character s : set) {
             sb.append(s);
         }
 
