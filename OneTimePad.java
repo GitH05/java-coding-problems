@@ -63,5 +63,6 @@ public class OneTimePad {
         String decryptedText = decrypt(encryptedText, key);
         System.out.println("Decrypted Text: " + decryptedText)
         scanner.close();
+        
     }
 }
