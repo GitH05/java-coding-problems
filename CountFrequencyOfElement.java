@@ -23,5 +23,6 @@ public class CountFrequencyOfElement {
 
         System.out.println("Frequency of each element: " + frequency);
         // Prints each number with its frequency.
+        
     }
 }
