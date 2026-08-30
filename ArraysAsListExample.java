@@ -7,14 +7,13 @@ public class ArraysAsListExample {
     public static void main(String[] args) {
 
         // Arrays.asList() creates a fixed-size List
-        List<String> names =
-                Arrays.asList("Ram", "Shyam", "Hari");
+        List<String> names = Arrays.asList("Ram", "Shyam", "Hari");
+
+        System.out.println("Before set(): " + names);
 
         // Changing an existing element is allowed
         names.set(0, "Sita");
 
-        System.out.println("Before set(): " + names);
-        
         System.out.println("After set(): " + names);
 
         // Adding a new element is NOT allowed
@@ -25,10 +24,8 @@ public class ArraysAsListExample {
         }
 
         // Use ArrayList when you need a resizable List
-        List<String> resizableNames =
-                new ArrayList<>(
-                        Arrays.asList("Ram", "Shyam", "Hari")
-                );
+        List<String> resizableNames = new ArrayList<>(
+                Arrays.asList("Ram", "Shyam", "Hari"));
 
         resizableNames.add("Gita");
 
