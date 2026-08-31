@@ -28,7 +28,7 @@ public class ArraysAsListExample {
                 Arrays.asList("Ram", "Shyam", "Hari"));
 
         resizableNames.add("Gita");
-
         System.out.println("ArrayList: " + resizableNames);
+    
     }
 }
