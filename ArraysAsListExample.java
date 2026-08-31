@@ -29,6 +29,5 @@ public class ArraysAsListExample {
 
         resizableNames.add("Gita");
         System.out.println("ArrayList: " + resizableNames);
-    
     }
 }
