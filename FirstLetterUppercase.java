@@ -1,5 +1,6 @@
 public class FirstLetterUppercase {
     public static void main(String[] args) {
+        
         String word = "HeLlo vSSS";
         String[] words = word.split(" ");
         String uppCase = "";
@@ -11,6 +12,7 @@ public class FirstLetterUppercase {
                     i.substring(1).toLowerCase() + " ";
         }
         System.err.println(uppCase);
+        
     }
 
 }
