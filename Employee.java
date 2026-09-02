@@ -169,8 +169,7 @@ public class Employee {
         } else {
             System.out.printf("%-5s %-15s %-25s %-15s %-15s %-15s%n",
                     "ID", "Name", "Email", "Contact", "Department", "City");
-            System.out.println(
-                    "-----------------------------------------------------------------------------------------");
+            System.out.println("-----------------------------------------------------------------------------------------");
 
             for (EmployeeEntity emp : empDetails) {
                 System.out.printf("%-5d %-15s %-25s %-15s %-15s %-15s%n",
@@ -199,7 +198,7 @@ public class Employee {
 
                 for (int i = 0; i < empDetails.size(); i++) {
                     if (empDetails.get(i).id == id) {
-                        empDetails.remove(i); // safe in indexed loop
+                        empDetails.remove(i);    // safe in indexed loop
                         System.out.println("Data Deleted!");
                         found = true;
                         break;
