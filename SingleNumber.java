@@ -21,5 +21,6 @@ public class SingleNumber {
         }
 
         System.out.println("The single number is: " + result);
+        
     }
 }
