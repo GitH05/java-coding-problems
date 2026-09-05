@@ -38,5 +38,6 @@ public class DNASequenceDecoder {
         String sequenceBinary = "000001001011101010010110011";
         String result = extractDNABases(sequenceBinary);
         System.out.println("Nucleic Base Sequence: " + result);  // Output: AGCTT
+        
     }
 }
