@@ -11,9 +11,9 @@ public class TwoSum {
 
         for (int i = 0; i < nums.length; i++) {
 
-            int need = target - nums[i]; // Number needed to reach target
+            int need = target - nums[i];    // Number needed to reach target
 
-            if (map.containsKey(need)) { // Check if we already have that number
+            if (map.containsKey(need)) {    // Check if we already have that number
 
                 int firstIndex = map.get(need);
                 int secondIndex = i;
