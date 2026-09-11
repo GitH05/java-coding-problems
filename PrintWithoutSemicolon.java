@@ -1,4 +1,5 @@
 public class PrintWithoutSemicolon {
+    
     public static void main(String[] args) {
         
         // print anything without using Semicolon:

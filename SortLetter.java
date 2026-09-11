@@ -1,6 +1,7 @@
 public class SortLetter {
 
     public static void main(String[] args) {
+        
         String word = "hello hi";
         // String[] words = word.split(" ");
         char[] chars = word.toCharArray();
@@ -15,5 +16,6 @@ public class SortLetter {
             }
         }
         System.out.println(chars);
+        
     }
 }
