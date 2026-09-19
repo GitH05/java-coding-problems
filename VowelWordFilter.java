@@ -15,17 +15,19 @@ public class VowelWordFilter {
                 "grapes"
         };
 
+        String vowels = "aeiouAEIOU";
+
         List<String> result = new ArrayList<>();
 
         for (String word : words) {
 
             if (word.length() > 5 &&
-                    "aeiouAEIOU".indexOf(word.charAt(0)) != -1) {
+                    vowels.indexOf(word.charAt(0)) != -1) {
 
                 result.add(word);
             }
         }
 
-        System.out.println(result);
+        System.out.println("Output: "+result);
     }
 }
