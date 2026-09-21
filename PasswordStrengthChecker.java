@@ -30,10 +30,14 @@ public class PasswordStrengthChecker {
             }
         }
 
-        if (hasUpper) score++;
-        if (hasLower) score++;
-        if (hasDigit) score++;
-        if (hasSpecial) score++;
+        if (hasUpper)
+            score++;
+        if (hasLower)
+            score++;
+        if (hasDigit)
+            score++;
+        if (hasSpecial)
+            score++;
 
         if (score == 5) {
             System.out.println("Strong Password");
