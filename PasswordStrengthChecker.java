@@ -19,15 +19,10 @@ public class PasswordStrengthChecker {
         }
 
         for (char ch : password.toCharArray()) {
-            if (Character.isUpperCase(ch)) {
-                hasUpper = true;
-            } else if (Character.isLowerCase(ch)) {
-                hasLower = true;
-            } else if (Character.isDigit(ch)) {
-                hasDigit = true;
-            } else {
-                hasSpecial = true;
-            }
+            if (Character.isUpperCase(ch)) hasUpper = true;
+             else if (Character.isLowerCase(ch))hasLower = true;
+             else if (Character.isDigit(ch))hasDigit = true;
+             else hasSpecial = true;
         }
 
         if (hasUpper)
