@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | BankFlow</title>
+
+    <link rel="stylesheet" href="/createAccount.css">
+</head>
+
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+    <nav class="navbar">
+
+        <div class="brand">
+            <div class="brand-logo">B</div>
+
+            <div>
+                <h2>BankFlow</h2>
+                <span>Banking Management System</span>
+            </div>
+        </div>
+
+        <div class="api-status">
+            <span class="status-dot"></span>
+            API Connected
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                <span>✦</span>
+                Secure Banking
+            </div>
+
+            <h1>
+                Create your
+                <span>bank account.</span>
+            </h1>
+
+            <p>
+                Create a new account quickly and securely using
+                our Spring Boot banking API.
+            </p>
+
+        </section>
+
+
+        <section class="card">
+
+            <div class="card-header">
+
+                <div class="icon-box">
+                    +
+                </div>
+
+                <div>
+                    <h2>Create Account</h2>
+                    <p>Enter the account information below.</p>
+                </div>
+
+            </div>
+
+
+            <form id="createAccountForm">
+
+                <div class="input-group">
+
+                    <label for="accountHolderName">
+                        Account Holder Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">👤</span>
+
+                        <input
+                            type="text"
+                            id="accountHolderName"
+                            placeholder="Enter full name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label for="balance">
+                        Opening Balance
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="currency">₹</span>
+
+                        <input
+                            type="number"
+                            id="balance"
+                            placeholder="Enter opening balance"
+                            min="0"
+                            step="0.01"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <button type="submit" id="createBtn">
+
+                    <span>Create Account</span>
+
+                    <span class="arrow">→</span>
+
+                </button>
+
+            </form>
+
+
+            <div id="message"></div>
+
+
+            <div id="result" class="result hidden">
+
+                <div class="result-title">
+                    Account Created Successfully
+                </div>
+
+                <div class="account-info">
+
+                    <div>
+                        <small>Account ID</small>
+                        <strong id="resultId">-</strong>
+                    </div>
+
+                    <div>
+                        <small>Account Holder</small>
+                        <strong id="resultName">-</strong>
+                    </div>
+
+                    <div>
+                        <small>Balance</small>
+                        <strong id="resultBalance">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="/createAccount.js"></script>
+
+</body>
+
+</html>

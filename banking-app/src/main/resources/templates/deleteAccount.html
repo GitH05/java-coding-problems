@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Delete Account | BankFlow</title>
+
+<link rel="stylesheet" href="/deleteAccount.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="brand">
+
+<div class="logo">B</div>
+
+<div>
+<h2>BankFlow</h2>
+<span>Banking Management System</span>
+</div>
+
+</div>
+
+<div class="status">
+<span></span>
+API Connected
+</div>
+
+</nav>
+
+
+<main class="container">
+
+<section class="hero">
+
+<div class="badge">ACCOUNT MANAGEMENT</div>
+
+<h1>
+Delete an
+<span>account.</span>
+</h1>
+
+<p>
+Remove an existing account using its unique account ID.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<div class="warning-icon">
+!
+</div>
+
+<h2>Delete Account</h2>
+
+<p class="description">
+This action permanently removes the account.
+Please verify the account ID before continuing.
+</p>
+
+
+<form id="deleteForm">
+
+<label>Account ID</label>
+
+<input
+type="number"
+id="accountId"
+min="1"
+placeholder="Enter account ID"
+required
+>
+
+
+<div class="warning">
+
+<strong>⚠ Important</strong>
+
+<span>
+Deleting an account cannot be undone.
+</span>
+
+</div>
+
+
+<button
+type="submit"
+id="deleteBtn"
+>
+
+Delete Account
+
+</button>
+
+</form>
+
+
+<div id="message"></div>
+
+</section>
+
+</main>
+
+
+<script src="/deleteAccount.js"></script>
+
+</body>
+
+</html>

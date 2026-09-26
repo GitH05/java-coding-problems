@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Withdraw Money | BankFlow</title>
+
+<link rel="stylesheet" href="/withdraw.css">
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="brand">
+
+<div class="logo">B</div>
+
+<div>
+<h2>BankFlow</h2>
+<span>Banking Management System</span>
+</div>
+
+</div>
+
+<div class="status">
+<span></span>
+Secure Transaction
+</div>
+
+</nav>
+
+
+<main class="container">
+
+<section class="hero">
+
+<div class="badge">MONEY WITHDRAWAL</div>
+
+<h1>
+Withdraw from your
+<span>account.</span>
+</h1>
+
+<p>
+Enter your account and withdrawal amount.
+Your available balance will be checked automatically.
+</p>
+
+</section>
+
+
+<section class="card">
+
+<div class="transaction-icon">
+↑
+</div>
+
+<h2>Withdraw Money</h2>
+
+<p class="description">
+Enter the account and amount you want to withdraw.
+</p>
+
+
+<form id="withdrawForm">
+
+<div class="input-group">
+
+<label>Account ID</label>
+
+<input
+type="number"
+id="accountId"
+min="1"
+placeholder="Enter account ID"
+required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>Withdrawal Amount</label>
+
+<div class="money-input">
+
+<span>₹</span>
+
+<input
+type="number"
+id="amount"
+min="0.01"
+step="0.01"
+placeholder="0.00"
+required
+>
+
+</div>
+
+</div>
+
+
+<button id="withdrawBtn">
+
+Withdraw Money
+<span>→</span>
+
+</button>
+
+</form>
+
+
+<div id="message"></div>
+
+
+<div id="result" class="result hidden">
+
+<div class="success-title">
+✓ Withdrawal Successful
+</div>
+
+<div class="balance-box">
+
+<small>Remaining Balance</small>
+
+<strong id="newBalance">
+₹ 0.00
+</strong>
+
+</div>
+
+<div class="holder">
+Account Holder:
+<strong id="holderName">-</strong>
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<script src="/withdraw.js"></script>
+
+</body>
+</html>

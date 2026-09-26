@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>All Accounts | BankFlow</title>
+
+        <link rel="stylesheet" href="allAccounts.css">
+
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="logo">B</div>
+
+        <div>
+            <h2>BankFlow</h2>
+            <span>Banking Management System</span>
+        </div>
+
+    </div>
+
+    <div class="status">
+        <span></span>
+        API Connected
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="badge">ACCOUNT DIRECTORY</div>
+
+        <h1>
+            Your banking
+            <span>overview.</span>
+        </h1>
+
+        <p>
+            View all accounts currently stored in your banking system.
+        </p>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="top">
+
+            <div>
+
+                <h2>All Accounts</h2>
+
+                <p>
+                    Live data from
+                    <code>GET /api/accounts</code>
+                </p>
+
+            </div>
+
+            <button id="loadBtn">
+                ↻ Refresh
+            </button>
+
+        </div>
+
+
+        <div id="message"></div>
+
+
+        <div id="tableContainer">
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    ◎
+                </div>
+
+                <h3>Ready to load accounts</h3>
+
+                <p>
+                    Click refresh to retrieve all accounts.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- Bottom-right navigation -->
+        <div class="bottom-actions">
+
+            <a href="/accounts/create" class="bottom-action">
+                ＋ Create Account
+            </a>
+
+            <a href="/accounts/search" class="bottom-action">
+                ⌕ Get Account
+            </a>
+
+            <!-- Deposit -->
+            <a
+                href="/accounts/deposit"
+                class="bottom-action deposit"
+                title="Deposit"
+            >
+                ↙ Deposit
+            </a>
+
+            <!-- Withdraw -->
+            <a
+                href="/accounts/withdraw"
+                class="bottom-action withdraw"
+                title="Withdraw"
+            >
+                ↗ Withdraw
+            </a>
+
+
+            <!-- Delete -->
+            <a
+                href="/accounts/delete"
+                class="bottom-action delete"
+                title="Delete"
+            >
+                ⌫ Delete
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <script src="allAccounts.js"></script>
+
+</body>
+
+</html>

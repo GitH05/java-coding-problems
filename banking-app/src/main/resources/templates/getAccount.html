@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Account | BankFlow</title>
+
+    <link rel="stylesheet" href="/getAccount.css">
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="logo">B</div>
+
+        <div>
+            <h2>BankFlow</h2>
+            <span>Banking Management System</span>
+        </div>
+
+    </div>
+
+    <div class="api-status">
+        <span></span>
+        API Connected
+    </div>
+
+</nav>
+
+
+<main class="container">
+
+    <section class="hero">
+
+        <div class="badge">
+            ACCOUNT SEARCH
+        </div>
+
+        <h1>
+            Find your
+            <span>account.</span>
+        </h1>
+
+        <p>
+            Enter an account ID to retrieve the latest
+            account information from the banking system.
+        </p>
+
+    </section>
+
+
+    <section class="card">
+
+        <div class="icon">
+            🔎
+        </div>
+
+        <h2>Account Lookup</h2>
+
+        <p class="description">
+            Search using the unique account ID.
+        </p>
+
+
+        <form id="getAccountForm">
+
+            <label>Account ID</label>
+
+            <input
+                type="number"
+                id="accountId"
+                min="1"
+                placeholder="Enter account ID"
+                required
+            >
+
+
+            <button id="searchBtn">
+
+                <span>Find Account</span>
+
+                <span>→</span>
+
+            </button>
+
+        </form>
+
+
+        <div id="message"></div>
+
+
+        <div id="accountResult" class="account-result hidden">
+
+            <div class="result-heading">
+                Account Information
+            </div>
+
+
+            <div class="details">
+
+                <div class="detail">
+                    <small>Account ID</small>
+                    <strong id="resultId">-</strong>
+                </div>
+
+                <div class="detail">
+                    <small>Account Holder</small>
+                    <strong id="resultName">-</strong>
+                </div>
+
+                <div class="detail balance">
+                    <small>Current Balance</small>
+                    <strong id="resultBalance">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script src="/getAccount.js"></script>
+
+</body>
+
+</html>
