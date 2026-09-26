@@ -11,8 +11,8 @@ public class MyConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/fileEncrypter?useSSL=false&allowPublicKeyRetrieval=true", "root",
-                    "2054");
+                    "jdbc:mysql://localhost:3306/DATABASE_NAME?useSSL=false&allowPublicKeyRetrieval=true", "USERNAME",
+                    "PASSWORD");
 
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
