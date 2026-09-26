@@ -1,0 +1,3 @@
+Spring Boot CRUD with JdbcTemplate + jqGrid.
+
+This project is a Spring Boot CRUD application that demonstrates how to build a well-structured backend using JdbcTemplate for database operations along with a clean layered architecture (Controller, Service, DAO, and Model). The backend exposes RESTful APIs for performing create, read, update, and delete operations, while the frontend uses jqGrid to present a responsive, user-friendly table interface for managing employee data. With its organized structure, this project serves as a great reference for learning how to design scalable applications by separating concerns across layers, integrating a lightweight frontend, and connecting seamlessly to a relational database.

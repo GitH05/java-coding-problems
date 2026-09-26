@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management – jqGrid</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- jqGrid CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/css/ui.jqgrid.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- jqGrid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/free-jqgrid@4.15.5/js/jquery.jqgrid.min.js"></script>
+
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f2ff, #f9f9f9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        h2 {
+            margin: 30px 0 20px;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Form Section */
+        .form-section {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 25px 35px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            width: 100%;
+        }
+
+        .form-label {
+            width: 120px;
+            margin-right: 10px;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .form-row input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: border 0.2s, box-shadow 0.2s;
+        }
+
+        .form-row input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0,123,255,0.2);
+        }
+
+        .form-buttons {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .form-section button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .form-section button#save {
+            background: #007bff;
+            color: #fff;
+        }
+
+        .form-section button#clear {
+            background: #6c757d;
+            color: #fff;
+        }
+
+        .form-section button:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        /* Grid Container */
+        #grid-container {
+            width: 95%;
+            max-width: 1000px;
+            margin: 20px auto 40px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        #grid {
+            width: auto !important;
+            margin: 0 auto;
+        }
+
+        /* jqGrid Styling */
+        .ui-jqgrid {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .ui-jqgrid .ui-jqgrid-hdiv {
+            background: #dcdcdc;
+            color: #000;
+            font-weight: bold;
+            border-bottom: 2px solid #aaa;
+            text-align: center;
+        }
+
+        .ui-jqgrid .ui-jqgrid-htable th div {
+            text-align: center !important;
+        }
+
+        .ui-jqgrid tr.jqgrow:nth-child(even) {
+            background: #f5f5f5;
+        }
+
+        .ui-jqgrid tr.jqgrow:nth-child(odd) {
+            background: #fff;
+        }
+
+        .ui-jqgrid tr.jqgrow:hover {
+            background: #e0e0e0 !important;
+            cursor: default;
+        }
+
+        .ui-jqgrid tr.jqgrow td {
+            padding: 8px;
+            border: 1px solid #ccc !important;
+            font-size: 0.9rem;
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+        .ui-jqgrid .ui-jqgrid-pager {
+            background: #dcdcdc;
+            border-top: 1px solid #aaa;
+            border-radius: 0 0 4px 4px;
+        }
+
+        .ui-pg-table {
+            margin: 5px auto;
+        }
+
+        /* Action Buttons */
+        .action-cell {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .edit-btn, .delete-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            width: 80px;
+            text-align: center;
+        }
+
+        .edit-btn {
+            background-color: #ffc107;
+            color: #fff;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📚 Student Management</h2>
+
+<!-- Form Section -->
+<form class="form-section" id="studentForm">
+    <input type="hidden" id="id">
+    <div class="form-row">
+        <label for="name" class="form-label">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-row">
+        <label for="address" class="form-label">Address:</label>
+        <input type="text" id="address" name="address" required>
+    </div>
+    <div class="form-row">
+        <label for="department" class="form-label">Department:</label>
+        <input type="text" id="department" name="department" required>
+    </div>
+    <div class="form-buttons">
+        <button type="submit" id="save">💾 Save</button>
+        <button type="button" id="clear">🧹 Clear</button>
+    </div>
+</form>
+
+<!-- Grid Section -->
+<div id="grid-container">
+    <table id="grid"></table>
+    <div id="pager"></div>
+</div>
+
+<!-- External JS -->
+<script src="js/studentDetail.js"></script>
+</body>
+</html>
