@@ -11,7 +11,7 @@ public class SendOTPService {
         String to = email;
 
         // Sender's email ID needs to be mentioned
-        String from = "santoshdhawal05@gmail.com";
+        String from = "ENTER-YOUR-MAIL";
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -30,8 +30,8 @@ public class SendOTPService {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication(from, "xrzdhenyjbpneiux");
-
+                return new PasswordAuthentication(from, "TURN-ON-2FA/ADD-APP-PASSWORD/PASTE-GENERATED-CODE-HERE"); 
+//OF YOUR WON MAIL (GOOGLE: IN MNG YOPUR ACC - TURN ON 2FA - THEN SEARCH FOR ADD APP PASSWORD - COPY THE GEMNERATED CODE)
             }
 
         });

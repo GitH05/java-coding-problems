@@ -1,5 +1,6 @@
 package com.dhawal.modal;
 
+// Instead of Class | record can be used to avoid all these gettre/setter , constructor and all other boilerplate
 public class Data {
 
     private int id;
