@@ -69,7 +69,6 @@ Hide it. Store it. Restore it.
 🖥️ GUI application
 
 🔑 Password hashing
-
 🔍 File search and management
 
 👨‍💻 Author
