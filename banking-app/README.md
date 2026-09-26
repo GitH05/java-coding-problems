@@ -252,3 +252,4 @@ If this project helped you learn Java, Spring Boot, CRUD operations, or full-sta
 Java + Spring Boot + HTML + CSS + JavaScript
 
 A beginner-friendly full-stack banking application demonstrating CRUD operations and database integration.
+Best for Practice
