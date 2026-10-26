@@ -1,0 +1,33 @@
+server:
+    port: 8080
+
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/angular_crud
+        username: root
+        password: 
+        driver-class-name: com.mysq.cj.jdbc.Driver
+
+    servlet:
+        multipart:
+            max-file-size: 64MB
+            max-request-size: 64MB
+        
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                format sql: true
+
+    application:
+        name: crud
+
+    security:
+        user:
+            name: admin
+            password: admin123
+
+image:
+    upload-dir: 
