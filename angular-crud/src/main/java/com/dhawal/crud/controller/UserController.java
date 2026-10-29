@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dhawal.crud.dto.UserDTO;
 import com.dhawal.crud.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController 

@@ -1,21 +1,21 @@
+
 package com.dhawal.crud.dto;
 
 public class UserDTO {
+
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String profileImage;
     private boolean active;
 
-    public UserDTO(Long id, String firstName, String lastName, String email, String password, String profileImage,
-            boolean active) {
+    public UserDTO(Long id, String firstName, String lastName,
+                   String email, String profileImage, boolean active) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
         this.profileImage = profileImage;
         this.active = active;
     }
@@ -52,14 +52,6 @@ public class UserDTO {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getProfileImage() {
         return profileImage;
     }
@@ -68,12 +60,11 @@ public class UserDTO {
         this.profileImage = profileImage;
     }
 
-    public boolean isActive() {
+    public boolean getActive() {
         return active;
     }
 
     public void setActive(boolean active) {
         this.active = active;
     }
-
 }
