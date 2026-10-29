@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dhawal.crud.dto.UserDTO;
+import com.dhawal.crud.entity.User;
 import com.dhawal.crud.repository.UserRepository;
 
 @Service
@@ -26,6 +27,19 @@ public class UserService {
                         user.getProfileImage(),
                         user.getActive()))
                 .collect(Collectors.toList());
+    }
+
+    public UserDTO getUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+
+        return new UserDTO(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getProfileImage(),
+                user.getActive());
     }
 
 }

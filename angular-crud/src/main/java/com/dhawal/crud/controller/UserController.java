@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dhawal.crud.dto.UserDTO;
 import com.dhawal.crud.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
-
-@RestController 
+@RestController
 @RequestMapping("api/users")
 public class UserController {
 
-    @Autowired 
+    @Autowired
     private UserService userService;
 
     @GetMapping("")
@@ -24,6 +24,10 @@ public class UserController {
         List<UserDTO> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
-    
-}
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long id) {
+        return ResponseEntity.ok(userService.getUserById(id));
+    }
+
+}
