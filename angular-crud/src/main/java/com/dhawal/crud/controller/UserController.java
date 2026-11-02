@@ -1,5 +1,6 @@
 package com.dhawal.crud.controller;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
@@ -9,9 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dhawal.crud.dto.UserDTO;
+import com.dhawal.crud.entity.User;
 import com.dhawal.crud.service.UserService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -76,6 +80,23 @@ public class UserController {
             response.put("timestamp", LocalDateTime.now());
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
         }
+    }
+
+    @PostMapping("")
+    public ResponseEntity<UserDTO> createuser(
+            @RequestParam("first_name") String firstName,
+            @RequestParam("last_name") String lastName,
+            @RequestParam("email") String email,
+            @RequestParam("password") String password,
+            @RequestParam(value = "image", required = false) MultipartFile profileImage) throws IOException {
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setPassword(password);
+
+        UserDTO createdUser = userService.saveUser(user, profileImage);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
 }

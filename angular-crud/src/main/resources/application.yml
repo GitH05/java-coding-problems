@@ -30,4 +30,4 @@ spring:
             password: admin123
 
 image:
-    upload-dir: "D:/RESUME/FinProject/spring_angular_crud/uploads"
+    upload-dir: "D:/Project/JAVA/angular-crud/uploads"
