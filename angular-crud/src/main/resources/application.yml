@@ -4,8 +4,8 @@ server:
 spring:
     datasource:
         url: jdbc:mysql://localhost:3306/angular_crud
-        username: 
-        password: 
+        username: root
+        password: 2054
         driver-class-name: com.mysql.cj.jdbc.Driver
 
     servlet:
