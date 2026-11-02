@@ -14,32 +14,32 @@ import com.dhawal.crud.repository.UserRepository;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+        @Autowired
+        private UserRepository userRepository;
 
-    public List<UserDTO> getAllUsers() {
-        return userRepository.findAll().stream()
-                .map(user -> new UserDTO(
-                        user.getId(),
-                        user.getFirstName(),
-                        user.getLastName(),
-                        user.getEmail(),
-                        user.getProfileImage(),
-                        user.getActive()))
-                .collect(Collectors.toList());
-    }
+        public List<UserDTO> getAllUsers() {
+                return userRepository.findAll().stream()
+                                .map(user -> new UserDTO(
+                                                user.getId(),
+                                                user.getFirstName(),
+                                                user.getLastName(),
+                                                user.getEmail(),
+                                                user.getProfileImage(),
+                                                user.getActive()))
+                                .collect(Collectors.toList());
+        }
 
-    public UserDTO getUserById(Long id) {
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+        public UserDTO getUserById(Long id) {
+                User user = userRepository.findById(id)
+                                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
 
-        return new UserDTO(
-                user.getId(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getEmail(),
-                user.getProfileImage(),
-                user.getActive());
-    }
+                return new UserDTO(
+                                user.getId(),
+                                user.getFirstName(),
+                                user.getLastName(),
+                                user.getEmail(),
+                                user.getProfileImage(),
+                                user.getActive());
+        }
 
 }
