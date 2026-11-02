@@ -96,20 +96,61 @@ public class UserService {
                                         savedUser.getProfileImage(),
                                         savedUser.getActive());
 
-                        // return new UserDTO(
-                        // savedUser.getId(),
-                        // savedUser.getFirstName(),
-                        // savedUser.getLastName(),
-                        // savedUser.getEmail(),
-                        // savedUser.getProfileImage(),
-                        // savedUser.getActive());
-                        // }
                 } catch (IOException e) {
                         response.put("status", "fail");
                         response.put("message", "Error saving user: " + e.getMessage());
                         response.put("timestamp", LocalDateTime.now());
                         throw new RuntimeException("Error saving user: " + e.getMessage(), e);
                 }
+        }
+
+        @Transactional
+        public UserDTO updateUser(Long id, User updatedUser, MultipartFile profileImage) throws IOException {
+
+                Map<String, Object> response = new HashMap<>();
+                try {
+                        User existingUser = userRepository.findById(id)
+                                        .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+
+                        existingUser.setFirstName(updatedUser.getFirstName());
+                        existingUser.setLastName(updatedUser.getLastName());
+                        existingUser.setEmail(updatedUser.getEmail());
+
+                        if (profileImage != null && !profileImage.isEmpty()) {
+                                String fileName = System.currentTimeMillis() + "_" + profileImage.getOriginalFilename();
+                                Path filePath = Paths.get(uploadDir, fileName);
+
+                                Files.createDirectories(Paths.get(uploadDir));
+                                profileImage.transferTo(filePath.toFile());
+                                existingUser.setProfileImage(fileName);
+                        }
+
+                        User savedUser = userRepository.save(existingUser);
+                        response.put("status", "success");
+                        response.put("data", new UserDTO(
+                                        savedUser.getId(),
+                                        savedUser.getFirstName(),
+                                        savedUser.getLastName(),
+                                        savedUser.getEmail(),
+                                        savedUser.getProfileImage(),
+                                        savedUser.getActive()));
+                        response.put("message", "User updated successfully");
+                        response.put("timestamp", LocalDateTime.now());
+                        return new UserDTO(
+                                        savedUser.getId(),
+                                        savedUser.getFirstName(),
+                                        savedUser.getLastName(),
+                                        savedUser.getEmail(),
+                                        savedUser.getProfileImage(),
+                                        savedUser.getActive());
+
+                } catch (IOException e) {
+                        response.put("status", "fail");
+                        response.put("message", "Error updating user: " + e.getMessage());
+                        response.put("timestamp", LocalDateTime.now());
+                        throw new RuntimeException("Error updating user: " + e.getMessage(), e);
+                }
+
         }
 
 }
