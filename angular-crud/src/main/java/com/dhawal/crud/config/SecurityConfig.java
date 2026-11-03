@@ -19,9 +19,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/**").permitAll()
                 .anyRequest().permitAll()
             )
-
-            .formLogin(form -> form.disable())
-
+            .formLogin(form -> form.disable()
+            )
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
