@@ -32,3 +32,14 @@ public class ThreadConcept {
         file3.start();
     }
 }
+
+/*
+ * Java Multithreading allows a program to perform multiple tasks at the same
+ * time.
+ * 
+ * In this program, three threads download three different files simultaneously.
+ * - start() – Starts a new thread.
+ * - run() – Defines the task.
+ * - sleep() – Pauses a thread for 1 second.
+ * Real-world example: Downloading multiple files at the same time.
+ */
