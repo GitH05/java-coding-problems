@@ -1,4 +1,3 @@
-
 package com.dhawal.crud.config;
 
 import org.springframework.context.annotation.Bean;
@@ -13,15 +12,14 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
         http
-            .csrf(csrf -> csrf.disable())
-
+            .csrf(csrf -> csrf.disable()
+            )
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll()
                 .anyRequest().permitAll()
             )
-
-            .formLogin(form -> form.disable())
-
+            .formLogin(form -> form.disable()
+            )
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")

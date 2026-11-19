@@ -49,7 +49,6 @@ public class UserController {
             response.put("timestamp", LocalDateTime.now());
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
     }
 
     @GetMapping("/{id}")
@@ -116,5 +115,3 @@ public class UserController {
         UserDTO userDTO = userService.updateUser(id, updatedUser, profileImage);
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
-
-}
