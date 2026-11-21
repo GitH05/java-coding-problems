@@ -32,7 +32,6 @@ public class ThreadConcept {
         file3.start();
     }
 }
-
 /*
  * Java Multithreading allows a program to perform multiple tasks at the same
  * time.
