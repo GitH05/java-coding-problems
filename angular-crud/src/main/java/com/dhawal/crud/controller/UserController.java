@@ -115,3 +115,4 @@ public class UserController {
         UserDTO userDTO = userService.updateUser(id, updatedUser, profileImage);
         return new ResponseEntity<>(userDTO, HttpStatus.OK);
     }
+}

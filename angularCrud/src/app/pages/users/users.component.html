@@ -1,0 +1,406 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">
+      <span class="brand-mark">A</span>
+      <span>WorkSpace</span>
+    </div>
+
+    <div class="workspace-label">WORKSPACE</div>
+
+    <nav class="nav-list">
+      <a class="nav-item">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        Overview
+      </a>
+
+      <a class="nav-item selected">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="8" r="3.2" />
+          <path d="M3.8 19c.4-3 2.5-4.8 5.2-4.8s4.8 1.8 5.2 4.8M16 5.2a3 3 0 0 1 0 5.8M17 14.3c2.1.5 3.4 2.1 3.8 4.7" />
+        </svg>
+        People
+        <span class="nav-count">{{ users.length }}</span>
+      </a>
+
+      <a class="nav-item muted">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 5.5h16v13H4zM8 9h8M8 13h5" />
+        </svg>
+        Reports
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="help-row">
+        <span class="help-icon">?</span>
+        <span>Help &amp; support</span>
+      </div>
+
+      <div class="profile-mini">
+        <div class="mini-avatar">AD</div>
+        <div class="mini-info">
+          <strong>Admin workspace</strong>
+          <small>Administrator</small>
+        </div>
+        <span class="dots">···</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <header class="topbar">
+      <div class="breadcrumb">
+        Workspace <span>/</span> <strong>People</strong>
+      </div>
+
+      <div class="top-actions">
+        <button class="icon-button" aria-label="Notifications">
+          <svg viewBox="0 0 24 24">
+            <path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 8h18c0-1-3-1-3-8" />
+            <path d="M10 21h4" />
+          </svg>
+          <span class="notification-dot"></span>
+        </button>
+        <div class="top-avatar">AD</div>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="page-heading">
+        <div>
+          <div class="eyebrow">DIRECTORY</div>
+          <h1>People</h1>
+          <p class="subheading">
+            Manage your team members and their account details.
+          </p>
+        </div>
+
+        <button class="add-button" (click)="openCreate()">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          <span>Add person</span>
+        </button>
+      </div>
+
+      <section class="summary-grid">
+        <article class="summary-card">
+          <div class="summary-top">
+            <span class="summary-label">All people</span>
+            <span class="summary-icon neutral">
+              <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3" />
+                <path d="M3.5 19c.3-3 2.5-5 5.5-5s5.2 2 5.5 5M16 5.5a3 3 0 0 1 0 5.5M17 14c2.2.6 3.5 2.3 3.8 5" />
+              </svg>
+            </span>
+          </div>
+          <div class="summary-value">{{ users.length }}</div>
+          <div class="summary-foot">Total registered accounts</div>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-top">
+            <span class="summary-label">Active</span>
+            <span class="summary-icon green">
+              <svg viewBox="0 0 24 24">
+                <path d="m5 12 4 4L19 6" />
+              </svg>
+            </span>
+          </div>
+          <div class="summary-value">{{ activeCount }}</div>
+          <div class="summary-foot">
+            <span class="dot-green"></span> Active accounts
+          </div>
+        </article>
+
+        <article class="summary-card">
+          <div class="summary-top">
+            <span class="summary-label">Inactive</span>
+            <span class="summary-icon amber">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="8" />
+                <path d="M12 8v4l2.5 1.5" />
+              </svg>
+            </span>
+          </div>
+          <div class="summary-value">{{ inactiveCount }}</div>
+          <div class="summary-foot">Accounts not currently active</div>
+        </article>
+      </section>
+
+      <section class="directory-card">
+        <div class="directory-header">
+          <div>
+            <h2>Team directory</h2>
+            <p>A list of people in your workspace.</p>
+          </div>
+          <span class="total-pill">{{ filteredUsers.length }} people</span>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24">
+              <circle cx="10.8" cy="10.8" r="6.8" />
+              <path d="m16 16 4.2 4.2" />
+            </svg>
+            <input type="search" placeholder="Search by name or email..." [value]="search"
+              (input)="setSearch($any($event.target).value)" />
+          </div>
+
+          <div class="filter-wrap">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 6h16M7 12h10M10 18h4" />
+            </svg>
+            <select [value]="statusFilter" (change)="setStatus($any($event.target).value)">
+              <option value="all">All statuses</option>
+              <option value="active">Active</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>PERSON</th>
+                <th>STATUS</th>
+                <th>USER ID</th>
+                <th class="actions-head">ACTIONS</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngIf="loading">
+                <td colspan="4" class="loading-cell">
+                  <span class="spinner"></span>
+                  Loading directory...
+                </td>
+              </tr>
+
+
+
+              <tr *ngFor="let user of pagedUsers">
+                <td>
+                  <div class="person-cell">
+                    <div class="person-avatar">
+                      <img *ngIf="imageUrl(user.profileImage) as photo" [src]="photo"
+                        [alt]="user.firstName + ' avatar'" />
+                      <span *ngIf="!user.profileImage">
+                        {{ initials(user) }}
+                      </span>
+                    </div>
+
+                    <div class="person-meta">
+                      <div class="person-name">
+                        {{ user.firstName }} {{ user.lastName }}
+                      </div>
+                      <div class="person-email">{{ user.email }}</div>
+                    </div>
+                  </div>
+                </td>
+
+                <td>
+                  <span class="status-tag" [class.status-active]="user.active" [class.status-inactive]="!user.active">
+                    <span class="status-dot"></span>
+                    {{ user.active ? 'Active' : 'Inactive' }}
+                  </span>
+                </td>
+
+                <td>
+                  <span class="id-label">#{{ user.id }}</span>
+                </td>
+
+                <td class="actions-cell">
+                  <button class="row-action" title="Edit person" (click)="openEdit(user)">
+                    <svg viewBox="0 0 24 24">
+                      <path d="m14 5 5 5M4 20l4.2-.8L19 8.4a2.1 2.1 0 0 0-3-3L5.2 16.2 4 20Z" />
+                    </svg>
+                  </button>
+
+                  <button class="row-action danger-action" title="Delete person" (click)="deleteUser(user)">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5" />
+                    </svg>
+                  </button>
+                </td>
+              </tr>
+
+              <tr *ngIf="!loading && filteredUsers.length === 0">
+                <td colspan="4" class="empty-cell">
+                  <div class="empty-icon">
+                    <svg viewBox="0 0 24 24">
+                      <circle cx="10.8" cy="10.8" r="6.8" />
+                      <path d="m16 16 4.2 4.2" />
+                    </svg>
+                  </div>
+
+                  <strong>No people found</strong>
+                  <span>
+                    Try another search, or add a new person to your workspace.
+                  </span>
+
+                  <button *ngIf="!search && statusFilter === 'all'" class="empty-add" (click)="openCreate()">
+                    Add person
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <footer class="table-footer">
+          <span>
+            Showing
+            <strong>{{ rangeStart }}–{{ rangeEnd }}</strong>
+            of
+            <strong>{{ filteredUsers.length }}</strong>
+            people
+          </span>
+
+          <div class="pagination">
+            <button class="page-btn" [disabled]="page <= 1" (click)="goToPage(page - 1)" aria-label="Previous page">
+              <svg viewBox="0 0 24 24">
+                <path d="m15 18-6-6 6-6" />
+              </svg>
+            </button>
+
+            <button *ngFor="let p of pageNumbers" class="page-number" [class.current]="page === p"
+              (click)="goToPage(p)">
+              {{ p }}
+            </button>
+
+            <button class="page-btn" [disabled]="page >= pageCount" (click)="goToPage(page + 1)" aria-label="Next page">
+              <svg viewBox="0 0 24 24">
+                <path d="m9 6 6 6-6 6" />
+              </svg>
+            </button>
+          </div>
+        </footer>
+      </section>
+
+      <div class="footer-note">
+        People directory <span>·</span> Workspace management
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" *ngIf="toast" [class.toast-error]="toast.kind === 'error'" role="status">
+  <span class="toast-check">
+    {{ toast.kind === 'success' ? '✓' : '!' }}
+  </span>
+  {{ toast.message }}
+  <button (click)="toast = null" aria-label="Dismiss">×</button>
+</div>
+
+<div class="modal-backdrop" *ngIf="modalOpen" (click)="closeModal()">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    (click)="$event.stopPropagation()">
+    <header class="modal-head">
+      <div>
+        <div class="modal-kicker">
+          {{ editingId === null ? 'NEW ACCOUNT' : 'PROFILE SETTINGS' }}
+        </div>
+
+        <h2 id="modal-title">
+          {{ editingId === null ? 'Add a person' : 'Edit person' }}
+        </h2>
+
+        <p>
+          {{
+          editingId === null
+          ? 'Add someone to your workspace directory.'
+          : 'Update this person’s account details.'
+          }}
+        </p>
+      </div>
+
+      <button class="modal-close" (click)="closeModal()" aria-label="Close">
+        ×
+      </button>
+    </header>
+
+    <form [formGroup]="form" (ngSubmit)="save()" novalidate>
+      <div class="avatar-upload">
+        <div class="upload-preview">
+          <img *ngIf="preview" [src]="preview" alt="Profile preview" />
+
+          <span *ngIf="!preview" class="upload-initial">
+            {{ form.value.first_name?.[0] || 'P' }}{{ form.value.last_name?.[0] || '' }}
+          </span>
+
+          <span class="camera-badge">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 7h3l1.5-2h3L13 7h3a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z" />
+              <circle cx="9.5" cy="12.5" r="3" />
+            </svg>
+          </span>
+        </div>
+
+        <label class="upload-label">
+          Upload photo
+          <input type="file" accept="image/*" hidden (change)="onFileChange($event)" />
+        </label>
+
+        <span class="upload-hint">JPG or PNG, max 5 MB</span>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="first">First name <b>*</b></label>
+          <input id="first" type="text" formControlName="first_name" placeholder="e.g. Alex" />
+          <span class="field-error" *ngIf="form.controls.first_name.touched && form.controls.first_name.invalid">
+            First name is required.
+          </span>
+        </div>
+
+        <div class="form-field">
+          <label for="last">Last name <b>*</b></label>
+          <input id="last" type="text" formControlName="last_name" placeholder="e.g. Morgan" />
+          <span class="field-error" *ngIf="form.controls.last_name.touched && form.controls.last_name.invalid">
+            Last name is required.
+          </span>
+        </div>
+
+        <div class="form-field full-field">
+          <label for="email">Email address <b>*</b></label>
+          <input id="email" type="email" formControlName="email" placeholder="alex@company.com" />
+          <span class="field-error" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+            Enter a valid email address.
+          </span>
+        </div>
+
+        <div class="form-field full-field" *ngIf="editingId === null">
+          <label for="password">Temporary password <b>*</b></label>
+          <input id="password" type="password" formControlName="password" placeholder="At least 6 characters" />
+          <span class="field-error" *ngIf="form.controls.password.touched && form.controls.password.invalid">
+            Password must be at least 6 characters.
+          </span>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="cancel-button" (click)="closeModal()">
+          Cancel
+        </button>
+
+        <button type="submit" class="save-button" [disabled]="saving">
+          <span *ngIf="saving" class="button-spinner"></span>
+          {{
+          saving
+          ? 'Saving...'
+          : editingId === null
+          ? 'Create person'
+          : 'Save changes'
+          }}
+        </button>
+      </div>
+    </form>
+  </section>
+</div>
